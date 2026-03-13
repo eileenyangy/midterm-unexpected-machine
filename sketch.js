@@ -1,15 +1,10 @@
-let x, y, r;
-function setup() {
-  createCanvas(windowWidth, windowHeight);
-  background(0);
-  x = width / 2;
-  y = height / 2;
-  r = 5;
-}
+// AMBITIOUS
+//Try to catch the sun
 
-function draw() {
-  background(0);
-  noStroke();
-  fill(255);
-  circle(x, y, r * 2);
-}
+// COLORS
+let skyColor = "#6199C0"; // blue sky
+let sunColor = "#FFF2B4"; // yellow sun
+let mountainColor = "#D2E4F2"; // icy white blue
+
+// STAR VARIABLES
+let x, y, size1; // x + y are where a star gets drawn, size1 is how big it is
