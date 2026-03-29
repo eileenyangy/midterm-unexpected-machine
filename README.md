@@ -1,5 +1,5 @@
 # midterm-unexpected-machine
-Performance of an adjective "Growing"
+Performance of an adjective "AMBITIOUS"
 
 MidTerm Project - The Unexpected Machine: Performance of an Adjective
 Submit by March 13th 18:00 (6pm) to openProcessing & your github repo
