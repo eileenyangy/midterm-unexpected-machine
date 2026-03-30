@@ -15,7 +15,7 @@ let lastFootY = -1000;
 let peakX = 560;
 let peakY = 390;
 
-//PERSON (person moving up mountain with pauses) + climbing
+//PERSON CLIMBING (person moving up mountain with pauses)
 let climberX = 770; //current
 let climberY = 700;
 let climbPath = [
@@ -25,6 +25,11 @@ let climbPath = [
   [500, 620, 635, 472, 635, 472], // pause 2
   [620, 800, 635, 472, 560, 390], // final push to the peak
 ];
+
+//Constants 
+const climb_end = 800; 
+const rope_start = 850;
+const rope_moving = 180;
 
 // STARS
 let x, y, size1; //x and y = where stars get drawn
