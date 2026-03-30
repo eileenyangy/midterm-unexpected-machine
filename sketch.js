@@ -15,6 +15,17 @@ let lastFootY = -1000;
 let peakX = 560;
 let peakY = 390;
 
+//PERSON (person moving up mountain with pauses) + climbing
+let climberX = 770; //current
+let climberY = 700;
+let climbPath = [
+  [0, 200, 770, 710, 700, 590], // first stretch up the mountain
+  [200, 320, 700, 590, 700, 590], // pause 1
+  [320, 500, 700, 590, 635, 472], // second stretch
+  [500, 620, 635, 472, 635, 472], // pause 2
+  [620, 800, 635, 472, 560, 390], // final push to the peak
+];
+
 // STARS
 let x, y, size1; //x and y = where stars get drawn
 
@@ -51,31 +62,21 @@ function keyPressed() {
 class Snowflake {
   constructor() {
     //Runs automatically whenever a new Snowflake is created
-    
     this.posX = 0; //Starting horizontal position of snowflake
-    
     this.posY = random(-height, 0); //random(-height, 0) puts the snowflake somewhere above the canvas to start
-    
     this.initialAngle = random(TWO_PI); // random starting angle for drifting motion
-    
     this.size = random(3, 8); //size of snowflakes vary between 3 - 8
-    
     this.radius = random(400); //sets how far the snowflake can drift sideways
-    
   }
 
   update(time) {
     // Defining angular speed (degrees / second)
     let angularSpeed = 1;
-
     // Calculating the current angle
     let angle = this.initialAngle + angularSpeed * time;
-
     //X position follows sin wave
     this.posX = width / 2 + this.radius * sin(angle);
-
     this.posY += 6 / this.size; // smaller flakes fall slower
-
     // When snowflake reaches the bottom, move to top
     if (this.posY > height) {
       this.posY = -50;
@@ -108,32 +109,25 @@ function setup() {
   //Setup moon position to default
   moonCX = moonHomeX; 
   moonCY = moonHomeY;
-  
   //Rope attachment based on moon position
   updateRope();
-  
   //Generating snowflakes
   buildArrays();
 }
 
 // MOVING MOON AWAY FROM MOUSE
 function updateMoon() {
-  
   //D is the distance between mouse & moon center
   let d = dist(mouseX, mouseY, moonCX, moonCY);
-
   //When the mouse is close, strength is high; When far, strength weakens to 0
   let fStrength = map(d, 0, moonR * 3, 1, 0, true);
-
   //Direction from mouse toward the moon
   let fx = moonCX - mouseX;
   let fy = moonCY - mouseY;
   let fmag = sqrt(fx * fx + fy * fy) || 1; // avoid dividing by 0!
-
   //How much the moon should move away from the mouse
   escapeX = (fx / fmag) * fStrength * moonR * 0.5;
   escapeY = (fy / fmag) * fStrength * moonR * 0.2;
-
   //Setting moon's current position based on its default position + how far it has moved while moving away from mouse
   moonCX = moonHomeX + escapeX;
   moonCY = moonHomeY + escapeY;
@@ -182,7 +176,6 @@ function draw() {
   pop(); //restores everything back to how it was before
 
   drawRope();
-
   // move and draw every snowflake; pass time in seconds
   let currentTime = frameCount / 60;
   for (let f of snowflakes) {
