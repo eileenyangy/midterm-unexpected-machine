@@ -73,19 +73,16 @@ class Footstep {
     this.y = fy; // store y pos passed in vertically
   }
 
-  show() {
-    // show() draws this specific footstep onto the canvas each frame
+  show() { // draws footstep
     noStroke();
     fill("#FFFFFF");
     ellipse(this.x, this.y, 5, 4); //left foot, 5px wide, 4 px tall
-    ellipse(this.x + 7, this.y + 3, 4); // right foot: shifted 7px to the right and 3px lower so the two feet look staggered
+    ellipse(this.x + 7, this.y + 3, 4); // right foot
   }
 }
 
 // ---------------SNOWFLAKE CLASS-----------------------
-// Defines the properties of each snow particle
-// Each snowflake has a position, size, color, + motion
-// When new Snowflake() is called, constructor initializes these
+// Defines the properties of each snow particle / each snowflake has a position, size, color, + motion
 
 class Snowflake {
   constructor() {
@@ -105,8 +102,7 @@ class Snowflake {
     //X position follows sin wave
     this.posX = width / 2 + this.radius * sin(angle);
     this.posY += 6 / this.size; // smaller flakes fall slower
-    // When snowflake reaches the bottom, move to top
-    if (this.posY > height) {
+    if (this.posY > height) { // When snowflake reaches the bottom, move to top
       this.posY = -50;
     }
   }
@@ -118,8 +114,7 @@ class Snowflake {
 }
 
 // ---------------ROPE ANCHOR-----------------------
-// finds point on moon where rope connects
-// called every frame bc the moon moves, and this point needs to update
+// finds point on moon where rope connects; called every frame bc the moon moves, and this point needs to update
 function updateRope() {
   ropeAnchorX = moonCX + moonR * 0.8; //anchoring point to moon edge
   ropeAnchorY = moonCY + moonR * 0.6; //vertical position
@@ -291,7 +286,7 @@ function drawRope() {
   let prevX = handX; // start drawing from the hand's position
   let prevY = handY;
 
-  //Understanding bezier segment
+  //Understanding bezier segment 
   for (let i = 1; i <= maxSeg; i++) {
     let t = i / segments;
     let bx = (1-t) * (1-t) * handX + 2 * (1-t) * t * midX + t * t * ropeAnchorX;
