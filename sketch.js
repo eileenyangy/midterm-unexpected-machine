@@ -76,7 +76,7 @@ class Footstep {
   show() {
     // show() draws this specific footstep onto the canvas each frame
     noStroke();
-    fill("#FFFFFF"); // white color for the footprint marks
+    fill("#FFFFFF");
     ellipse(this.x, this.y, 5, 4); //left foot, 5px wide, 4 px tall
     ellipse(this.x + 7, this.y + 3, 4); // right foot: shifted 7px to the right and 3px lower so the two feet look staggered
   }
